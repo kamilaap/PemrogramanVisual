@@ -160,7 +160,6 @@ public class latihan5 extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(cbRenang)
                                                 .addGap(15, 15, 15)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cbBadminton)
                                             .addComponent(cbMemasak)
@@ -280,7 +279,7 @@ Text_Hasil.setText(
 
     private void bClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bClearActionPerformed
         // TODO add your handling code here:
-        areaResume.setText(null);
+       
     }//GEN-LAST:event_bClearActionPerformed
 
     private void bExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExitActionPerformed
