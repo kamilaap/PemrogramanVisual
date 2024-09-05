@@ -5,20 +5,22 @@
 package modul7;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
+
 
 /**
  *
  * @author Lenovo
  */
-public class latihan7 extends javax.swing.JFrame {
+public class latihandantugas7 extends javax.swing.JFrame {
 
     /**
      * Creates new form latihan7
      */
-    public latihan7() {
+    public latihandantugas7() {
         initComponents();
-         ListModel = new DefaultListModel<>();
+       ListModel = new DefaultListModel<>();
+    ListMinuman.setModel(ListModel);
+   
         
     }
 
@@ -34,16 +36,18 @@ public class latihan7 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         AreaKota = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        ListMinuman = new javax.swing.JTextArea();
+        ListMinuman = new javax.swing.JList<>();
         CbMakanan = new javax.swing.JComboBox<>();
         btTambah = new javax.swing.JButton();
         btHapus = new javax.swing.JButton();
         btUbah = new javax.swing.JButton();
         btSisip = new javax.swing.JButton();
-        eHasil = new javax.swing.JTextField();
+        tfKota = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        tfMinuman = new javax.swing.JTextField();
+        tfMakanan = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,8 +55,6 @@ public class latihan7 extends javax.swing.JFrame {
         AreaKota.setRows(5);
         jScrollPane1.setViewportView(AreaKota);
 
-        ListMinuman.setColumns(20);
-        ListMinuman.setRows(5);
         jScrollPane2.setViewportView(ListMinuman);
 
         btTambah.setText("Tambah");
@@ -83,6 +85,12 @@ public class latihan7 extends javax.swing.JFrame {
             }
         });
 
+        tfKota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfKotaActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Kota");
 
         jLabel2.setText("Minuman");
@@ -97,10 +105,20 @@ public class latihan7 extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btTambah, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btSisip, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(71, 71, 71)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(btHapus)
+                                    .addComponent(btUbah))
+                                .addGap(23, 23, 23)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,17 +126,11 @@ public class latihan7 extends javax.swing.JFrame {
                                             .addComponent(CbMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel2))
-                                    .addComponent(eHasil, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btTambah, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btSisip, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btUbah, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btHapus, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 72, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(tfMakanan, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfMinuman, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfKota, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))))
+                        .addGap(34, 87, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,11 +154,15 @@ public class latihan7 extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btTambah)
-                    .addComponent(eHasil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfKota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btHapus)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btHapus)
+                    .addComponent(tfMinuman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btUbah)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btUbah)
+                    .addComponent(tfMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btSisip)
                 .addContainerGap(47, Short.MAX_VALUE))
@@ -157,67 +173,73 @@ public class latihan7 extends javax.swing.JFrame {
 
     private void btTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTambahActionPerformed
         // TODO add your handling code here:
-        AreaKota.append("Gersik"+"\n");
-AreaKota.append("Malang "+"\n");
-AreaKota.append("Surabaya"+"\n");
-CbMakanan.insertItemAt("Rujak", 0);
-CbMakanan.insertItemAt("Rawon", 1);
-CbMakanan.insertItemAt("Sate", 2);
-JList<String> ListMinuman = new JList<>();
-DefaultListModel<String> ListModel = new DefaultListModel<>();
-
-ListModel.add(0, "Sprite");
-ListModel.add(1, "Fanta");
-ListModel.add(2, "Es Batu");
-ListModel.add(3, "Kopi");
-
-ListMinuman.setModel(ListModel);
+        AreaKota.append("Gresik" + "\n");
+        CbMakanan.addItem("Rujak");
+        ListModel.addElement("Sprite");
 
     }//GEN-LAST:event_btTambahActionPerformed
 
     private void btHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHapusActionPerformed
-       if (AreaKota.getLineCount()>0) {
-AreaKota.setSelectionStart(0);
-AreaKota.setSelectionEnd(12);
-int posisi = AreaKota.getSelectedText().indexOf("\n");
-AreaKota.replaceRange("", 0,posisi+1);
-if (posisi == -1)
-AreaKota.replaceRange("",0,8);
-}
-if (CbMakanan.getItemCount()>0){
-CbMakanan.removeItemAt(0);
-}
-if (ListModel.getSize()>0){
-ListModel.remove(0);
-} // TODO add your handling code here:
+     if (AreaKota.getLineCount() > 0) {
+            AreaKota.setText("");
+        }
+        if (CbMakanan.getItemCount() > 0) {
+            CbMakanan.removeAllItems();
+        }
+        if (ListModel.getSize() > 0) {
+            ListModel.clear();
+        }
     }//GEN-LAST:event_btHapusActionPerformed
 
     private void btUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUbahActionPerformed
- if (AreaKota.getLineCount() > 0) {
-            int start = 0;
-            int end = AreaKota.getText().indexOf("\n");
-            AreaKota.replaceRange(btUbah.getText() + "\n", start, end + 1);
+ if (!tfKota.getText().isEmpty()) {
+            AreaKota.setText(tfKota.getText() + "\n");
         }
-
-        if (CbMakanan.getItemCount() > 1) {
-            CbMakanan.removeItemAt(1);
-            CbMakanan.insertItemAt(btUbah.getText(), 1);
+        if (!tfMakanan.getText().isEmpty()) {
+            if (CbMakanan.getItemCount() > 0) {
+                CbMakanan.removeItemAt(0);
+                CbMakanan.insertItemAt(tfMakanan.getText(), 0);
+            }
         }
+        if (!tfMinuman.getText().isEmpty()) {
+            if (ListModel.getSize() > 0) {
+                ListModel.set(0, tfMinuman.getText());
+            }
+        
 
-        if (ListModel.getSize() > 1) {
-            ListModel.set(1, btUbah.getText());
     }//GEN-LAST:event_btUbahActionPerformed
     }
     private void btSisipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSisipActionPerformed
-AreaKota.insert("Kab.\n", 0);
-        AreaKota.append("Lamongan\n");
+// Menyisipkan kota di JTextArea (AreaKota) pada posisi tertentu
+    if (!tfKota.getText().isEmpty()) {
+        int posisi = AreaKota.getCaretPosition(); // Mendapatkan posisi kursor
+        AreaKota.insert(tfKota.getText() + "\n", posisi); // Menyisipkan teks di posisi kursor
+    }
 
-        CbMakanan.insertItemAt("Soto", 3);
-        CbMakanan.insertItemAt("Pecel", 0);
+    // Menyisipkan makanan di JComboBox (CbMakanan)
+    if (!tfMakanan.getText().isEmpty()) {
+        int posisi = CbMakanan.getSelectedIndex();
+        if (posisi == -1) {
+            CbMakanan.addItem(tfMakanan.getText()); // Tambah jika tidak ada pilihan yang dipilih
+        } else {
+            CbMakanan.insertItemAt(tfMakanan.getText(), posisi); // Sisip di posisi yang dipilih
+        }
+    }
 
-        ListModel.insertElementAt("Jus Apokat", 4);
-        ListModel.insertElementAt("Jus Tomat", 5);    // TODO add your handling code here:
+    // Menyisipkan minuman di JList (ListMinuman)
+    if (!tfMinuman.getText().isEmpty()) {
+        int posisi = ListMinuman.getSelectedIndex();
+        if (posisi == -1) {
+            ListModel.addElement(tfMinuman.getText()); // Tambah jika tidak ada yang dipilih
+        } else {
+            ListModel.add(posisi, tfMinuman.getText()); // Sisip di posisi yang dipilih
+        }
+    }
     }//GEN-LAST:event_btSisipActionPerformed
+
+    private void tfKotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfKotaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfKotaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,20 +258,21 @@ AreaKota.insert("Kab.\n", 0);
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(latihan7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(latihandantugas7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(latihan7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(latihandantugas7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(latihan7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(latihandantugas7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(latihan7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(latihandantugas7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new latihan7().setVisible(true);
+                new latihandantugas7().setVisible(true);
             }
         });
     }
@@ -257,19 +280,20 @@ AreaKota.insert("Kab.\n", 0);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AreaKota;
     private javax.swing.JComboBox<String> CbMakanan;
-    private javax.swing.JTextArea ListMinuman;
+    private javax.swing.JList<String> ListMinuman;
     private javax.swing.JButton btHapus;
     private javax.swing.JButton btSisip;
     private javax.swing.JButton btTambah;
     private javax.swing.JButton btUbah;
-    private javax.swing.JTextField eHasil;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField tfKota;
+    private javax.swing.JTextField tfMakanan;
+    private javax.swing.JTextField tfMinuman;
     // End of variables declaration//GEN-END:variables
 DefaultListModel ListModel;
     private static class ListModel {
